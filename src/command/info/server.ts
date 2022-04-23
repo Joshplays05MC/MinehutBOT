@@ -2,7 +2,7 @@ import { MinehutCommand } from '../../structure/command/minehutCommand';
 import { Message } from 'discord.js';
 import { MessageEmbed } from 'discord.js';
 import { prettyDate } from '../../util/functions';
-import { startCase, truncate } from 'lodash';
+//import { startCase, truncate } from 'lodash';
 
 const COLOUR_CODE_EXPR = /&[0-9A-FK-OR]/gim;
 
@@ -58,38 +58,38 @@ export default class ServerInfoCommand extends MinehutCommand {
 				'Categories',
 				server.categories.map(c => `• ${c}`.trim()).join('\n')
 			);
-			const addons = await server.getInstalledContent();
-			if (addons.length > 0)
-				embed.addField(
-					'Installed Content',
-					addons
-						.map(p =>
-							`• ${p.title} ${
-								p.category == 'Plugin' ? '' : `(${p.category})`
-							}`.trim()
-						)
-						.join('\n')
-				);
-			embed.addField(
-				'Server Properties',
-				Object.keys(server.serverProperties)
-					.map(
-						key =>
-							`⋆ **${startCase(key)}**: ${
-								typeof server.serverProperties[key] === 'boolean'
-									? server.serverProperties[key]
-										? 'Yes'
-										: 'No'
-									: server.serverProperties[key].toString().length > 0
-									? `\`${truncate(server.serverProperties[key] + '', {
-											length: 50,
-									  })}\``
-									: truncate(server.serverProperties[key] + '', { length: 50 })
-							}`
-					)
-					.join('\n'),
-				true
-			);
+			//const addons = await server.getInstalledContent();
+			//if (addons.length > 0)
+			//	embed.addField(
+			//		'Installed Content',
+			//		addons
+			//			.map(p =>
+			//				`• ${p.title} ${
+			//					p.category == 'Plugin' ? '' : `(${p.category})`
+			//				}`.trim()
+			//			)
+			//			.join('\n')
+			//	);
+			//embed.addField(
+			//	'Server Properties',
+			//	Object.keys(server.serverProperties)
+			//		.map(
+			//			key =>
+			//				`⋆ **${startCase(key)}**: ${
+			//					typeof server.serverProperties[key] === 'boolean'
+			//						? server.serverProperties[key]
+			//							? 'Yes'
+			//							: 'No'
+			//						: server.serverProperties[key].toString().length > 0
+			//						? `\`${truncate(server.serverProperties[key] + '', {
+			//								length: 50,
+			//						  })}\``
+			//						: truncate(server.serverProperties[key] + '', { length: 50 })
+			//				}`
+			//		)
+			//		.join('\n'),
+			//	true
+			//);
 			embed.setFooter(
 				`Requested by ${msg.author.tag}`,
 				msg.author.displayAvatarURL()
